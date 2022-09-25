@@ -1,3 +1,4 @@
 ng new NameOfProject
 cd NameOfProject
 ng serve -o
+ng add @angular/material
