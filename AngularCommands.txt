@@ -1,0 +1,3 @@
+ng new NameOfProject
+cd NameOfProject
+ng serve -o
