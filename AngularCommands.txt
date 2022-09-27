@@ -2,3 +2,5 @@ ng new NameOfProject
 cd NameOfProject
 ng serve -o
 ng add @angular/material
+ng g c ComponentName	//for components
+ng g s service		//for services
