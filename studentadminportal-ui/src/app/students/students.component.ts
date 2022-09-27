@@ -14,7 +14,8 @@ import { StudentService } from './student.service';
 export class StudentsComponent implements OnInit {
 
   students : Student[] = [];
-  displayedColumns: string[] = ['firstName','lastName','dateOfBirth','email','mobile','gender'];
+  displayedColumns: string[] = ['firstName','lastName','dateOfBirth','email','mobile',
+  'gender', 'edit'];
   dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>();
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
@@ -26,9 +27,9 @@ export class StudentsComponent implements OnInit {
     // Fetch students
     this.studentService.getStudents()
     .subscribe({
-      next: (v) =>
+      next: (successResponse) =>
       {
-        this.students = v;
+        this.students = successResponse;
         this.dataSource = new MatTableDataSource<Student>(this.students);
 
         if(this.matPaginator) {
@@ -38,13 +39,14 @@ export class StudentsComponent implements OnInit {
         if(this.matSort) {
           this.dataSource.sort = this.matSort
         }
-        // console.log(v[0].firstName),
-        // console.log(v[0].lastName)
+        // console.log(successResponse[0].firstName),
+        // console.log(successResponse[0].lastName)
       },
-      error: (e) => console.error(e),
+      error: (errorResponse) => console.error(errorResponse),
       complete: () => console.info('complete')
   });
-  // .subscribe(  // This is getting depricated
+  // This is getting depricated
+  // .subscribe(
   //   (successResponse) => {
   //     console.log(successResponse)
   //   },

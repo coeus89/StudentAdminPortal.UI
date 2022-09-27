@@ -11,5 +11,5 @@ export interface Student {
   profileImageUrl: string,
   genderId: string,
   gender: Gender,
-  Address: Address
+  address: Address
 }
